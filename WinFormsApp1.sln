@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsApp1", "WinFormsApp1\WinFormsApp1.csproj", "{01D3A4AE-9655-45AD-A943-473879F8D2F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "git", "git", "{26B7E299-9227-4633-B2FE-747E9BF1A96C}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01D3A4AE-9655-45AD-A943-473879F8D2F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01D3A4AE-9655-45AD-A943-473879F8D2F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01D3A4AE-9655-45AD-A943-473879F8D2F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01D3A4AE-9655-45AD-A943-473879F8D2F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {670A6E10-4614-4FB3-B521-4ACEDB8D550F}
+	EndGlobalSection
+EndGlobal
