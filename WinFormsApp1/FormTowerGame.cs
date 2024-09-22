@@ -12,33 +12,50 @@ namespace WinFormsApp1
 {
     public partial class FormTowerGame : Form
     {
-        private StateDTO dto = new StateDTO();
+        private Logger logger;
+
         private EnumPositions pickLocation;
         private GameState gameState;
-        //private CustomMouseClick clicker;
 
         private int clickCounter = 0;
+        private int cycleCounter = 0;
 
         private ClickableComponent gemsComponent;
+        private ClickableComponent tabAttackComponent;
         private ClickableComponent damageComponent;
+        private ClickableComponent tabDefenceComponent;
+        private ClickableComponent healthComponent;
+        //private TextBox txtPositionTabDefanceY;
 
         public FormTowerGame()
         {
             InitializeComponent();
+            //timerClicks.Interval = 1000;
+
+            logger = new Logger(txtLog);
 
             pickLocation = EnumPositions.None;
 
-            gemsComponent = new ClickableComponent("Gems", 
+            gemsComponent = new ClickableComponent("Gems", logger,
                 txtPositionGemsX, txtPositionGemsY, lblIterationCurrentGems, btnIterationTotalGems);
-            damageComponent = new ClickableComponent("Damage",
+
+            tabAttackComponent = new ClickableComponent("AttackTab", logger,
+                txtPositionTabAttackX, txtPositionTabAttackY, lblIterationCurrentTabAttack, btnIterationTotalTabAttack);
+            damageComponent = new ClickableComponent("Damage", logger,
                 txtPositionDamageX, txtPositionDamageY, lblIterationCurrentDamage, btnIterationTotalDamage);
-            timerClicks.Interval = 1000;
 
-            //clicker = new CustomMouseClick();
+            tabDefenceComponent = new ClickableComponent("DefenceTab", logger,
+                txtPositionTabDefenceX, txtPositionTabDefenceY, lblIterationCurrentTabDefence, btnIterationTotalTabDefence);
+            healthComponent = new ClickableComponent("Health", logger,
+                txtPositionHealthX, txtPositionHealthY, lblIterationCurrentHealth, btnIterationTotalHealth);
 
-            gameState = new GameState(new List<ClickableComponent>() { 
+
+            gameState = new GameState(new List<ClickableComponent>() {
                 gemsComponent,
-                damageComponent
+                tabAttackComponent,
+                damageComponent,
+                tabDefenceComponent,
+                healthComponent
             });
             gameState.Load();
 
@@ -46,35 +63,39 @@ namespace WinFormsApp1
 
         private void FormTowerGame_Deactivate(object sender, EventArgs e)
         {
-            var pos = Cursor.Position;
-            Log($"{pickLocation} location: {pos.X} / {pos.Y}");
+            var position = Cursor.Position;
+            //logger.Log($"{pickLocation} location: {position.X} / {position.Y}");
 
             switch (pickLocation)
             {
                 case EnumPositions.Gems:
-                    gemsComponent.SaveData(pos);
+                    gemsComponent.SaveData(position);
+                    gameState.Save();
+                    break;
+                case EnumPositions.TabAttack:
+                    tabAttackComponent.SaveData(position);
                     gameState.Save();
                     break;
                 case EnumPositions.Damage:
-                    damageComponent.SaveData(pos);
+                    damageComponent.SaveData(position);
+                    healthComponent.SaveData(position);
+                    gameState.Save();
+                    break;
+                case EnumPositions.TabDefence:
+                    tabDefenceComponent.SaveData(position);
                     gameState.Save();
                     break;
                 default:
-                    Log($"No location pick");
+                    logger.Log($"deactivate: no location pick");
                     break;
             }
 
             pickLocation = EnumPositions.None;
 
             btnLocationGems.Enabled = true;
+            btnLocationAttackTab.Enabled = true;
             btnLocationDamage.Enabled = true;
-
-
-        }
-
-        private async Task Log(string message)
-        {
-            txtLog.AppendText($"{DateTime.Now.ToString("HH:mm:ss")}: {message} {Environment.NewLine}");
+            btnLocationDefenceTab.Enabled = true;
         }
 
         private void btnStartStop_Click(object sender, EventArgs e)
@@ -84,7 +105,7 @@ namespace WinFormsApp1
                 btnStartStop.Text = "Stop";
                 lblCounterSteps.Text = "0 / 12";
 
-                Log("Start clicker");
+                logger.Log("Start clicker");
                 timerClicks.Start();
                 clickCounter = 0;
 
@@ -93,48 +114,50 @@ namespace WinFormsApp1
             {
                 btnStartStop.Text = "Start";
 
-                Log("Stop clicker");
+                logger.Log("Stop clicker");
                 timerClicks.Stop();
             }
         }
 
 
-        private void btnLocationGems_Click(object sender, EventArgs e)
-        {
-            pickLocation = EnumPositions.Gems;
-            btnLocationGems.Enabled = false;
-        }
 
-        private void btnLocationDamage_Click(object sender, EventArgs e)
-        {
-            pickLocation = EnumPositions.Damage;
-            btnLocationDamage.Enabled = false;
-        }
 
         private void timerClicks_Tick(object sender, EventArgs e)
         {
             clickCounter++;
             lblCounterSteps.Text = $"{clickCounter} / 12";
-            //Log($"I AM CLICK {clickCounter}");
 
             switch (clickCounter)
             {
                 case 1:
-                    //gemsComponent
-                    Log("Click gems");
                     gemsComponent.Click();
                     gameState.Save();
-                    //int currentGems = int.Parse(lblIterationCurrentGems.Text);
-                    //currentGems++;
-                    //lblIterationCurrentGems.Text = $"{currentGems}";
-                    //clicker.ClickAt(int.Parse(txtPositionGemsX.Text), int.Parse(txtPositionGemsY.Text));
                     break;
                 case 2:
-                    Log("Click Damage");
-                    int currentDamage = int.Parse(lblIterationCurrentDamage.Text);
-                    currentDamage++;
-                    lblIterationCurrentDamage.Text = $"{currentDamage}";
-                    //clicker.ClickAt(int.Parse(txtPositionDamageX.Text), int.Parse(txtPositionDamageY.Text));
+                    switch (cycleCounter % 2)
+                    {
+                        case 0:
+                            tabAttackComponent.Click();
+                            gameState.Save();
+                            break;
+                        case 1:
+                            tabDefenceComponent.Click();
+                            gameState.Save();
+                            break;
+                    }
+                    break;
+                case 3:
+                    switch (cycleCounter % 2)
+                    {
+                        case 0:
+                            damageComponent.Click();
+                            gameState.Save();
+                            break;
+                        case 1:
+                            healthComponent.Click();
+                            gameState.Save();
+                            break;
+                    }
                     break;
                 default:
                     //Log("")
@@ -145,12 +168,39 @@ namespace WinFormsApp1
             if (clickCounter >= 12)
             {
                 clickCounter = 0;
+                cycleCounter++;
+                lblCycleCounter.Text = $"{cycleCounter}";
             }
         }
 
         private void btnPause_Click(object sender, EventArgs e)
         {
             //timerClicks.pas
+        }
+
+
+        private void btnLocationGems_Click(object sender, EventArgs e)
+        {
+            pickLocation = EnumPositions.Gems;
+            btnLocationGems.Enabled = false;
+        }
+
+        private void btnLocationAttackTab_Click(object sender, EventArgs e)
+        {
+            pickLocation = EnumPositions.TabAttack;
+            btnLocationAttackTab.Enabled = false;
+        }
+
+        private void btnLocationDamage_Click(object sender, EventArgs e)
+        {
+            pickLocation = EnumPositions.Damage;
+            btnLocationDamage.Enabled = false;
+        }
+
+        private void btnLocationDefenceTab_Click(object sender, EventArgs e)
+        {
+            pickLocation = EnumPositions.TabDefence;
+            btnLocationDefenceTab.Enabled = false;
         }
     }
 }

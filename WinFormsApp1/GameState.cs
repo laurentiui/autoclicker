@@ -21,7 +21,7 @@ namespace WinFormsApp1
 
         public void Save()
         {
-            var list = Components.Select(c => c.GetData());
+            var list = Components.Select(c => c.GetData()).ToList();
 
             string contents = JsonConvert.SerializeObject(list, Newtonsoft.Json.Formatting.Indented);
             File.WriteAllText(fileName, contents);

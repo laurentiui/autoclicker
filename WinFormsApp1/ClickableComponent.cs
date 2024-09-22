@@ -9,7 +9,7 @@ namespace WinFormsApp1
     internal class ClickableComponent
     {
         public string Title;
-
+        private readonly Logger logger;
         protected TextBox txtPositionX;
         protected TextBox txtPositionY;
         protected Label lblCurrent;
@@ -20,9 +20,11 @@ namespace WinFormsApp1
 
         private CustomMouseClick clicker;
 
-        public ClickableComponent(string title, TextBox txtPositionX, TextBox txtPositionY, Label lblCurrent, Label lblTotal)
+        public ClickableComponent(string title, Logger logger,
+            TextBox txtPositionX, TextBox txtPositionY, Label lblCurrent, Label lblTotal)
         {
             this.Title = title;
+            this.logger = logger;
             this.txtPositionX = txtPositionX;
             this.txtPositionY = txtPositionY;
             this.lblCurrent = lblCurrent;
@@ -53,8 +55,8 @@ namespace WinFormsApp1
             ComponentDto componentDto = new ComponentDto()
             {
                 Title = Title,
-                PositionX = int.Parse(txtPositionX.Text),
-                PositionY = int.Parse(txtPositionY.Text),
+                PositionX = int.TryParse(txtPositionX.Text, out var x) ? x : 0,
+                PositionY = int.TryParse(txtPositionY.Text, out var y) ? y : 0,
                 //ClicksCurrent = int.Parse(lblCurrent.Text),
                 ClicksTotal = int.Parse(lblTotal.Text)
             };
@@ -64,13 +66,14 @@ namespace WinFormsApp1
 
         public void Click()
         {
+            logger.Log($"Click {Title}");
             currentClicks++;
             totalClicks++;
 
             lblCurrent.Text = $"{currentClicks}";
             lblTotal.Text = $"{totalClicks}";
 
-            //clicker.ClickAt(int.Parse(txtPositionX.Text), int.Parse(txtPositionY.Text));
+            clicker.ClickAt(int.Parse(txtPositionX.Text), int.Parse(txtPositionY.Text));
         }
 
     }

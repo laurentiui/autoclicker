@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             lblCounterSteps = new Label();
-            lblIterations = new Label();
+            lblCycleCounter = new Label();
             lblTimer = new Label();
             btnIterationTotalDamage = new Label();
             btnIterationTotalTabDefence = new Label();
@@ -44,8 +44,8 @@
             lblIterationCurrentGems = new Label();
             btnPause = new Button();
             button1 = new Button();
-            txtPostionHealthY = new TextBox();
-            txtPostionHealthX = new TextBox();
+            txtPositionHealthY = new TextBox();
+            txtPositionHealthX = new TextBox();
             label5 = new Label();
             btnStartStop = new Button();
             btnLocationAttackTab = new Button();
@@ -54,7 +54,7 @@
             label4 = new Label();
             btnLocationDefenceTab = new Button();
             txtPositionTabDefenceY = new TextBox();
-            txtPositionTabDefanceX = new TextBox();
+            txtPositionTabDefenceX = new TextBox();
             label3 = new Label();
             btnLocationDamage = new Button();
             txtPositionDamageY = new TextBox();
@@ -72,27 +72,27 @@
             // 
             lblCounterSteps.AutoSize = true;
             lblCounterSteps.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            lblCounterSteps.Location = new Point(397, 216);
+            lblCounterSteps.Location = new Point(397, 230);
             lblCounterSteps.Name = "lblCounterSteps";
             lblCounterSteps.Size = new Size(91, 37);
             lblCounterSteps.TabIndex = 69;
             lblCounterSteps.Text = "0 / 12";
             // 
-            // lblIterations
+            // lblCycleCounter
             // 
-            lblIterations.AutoSize = true;
-            lblIterations.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            lblIterations.Location = new Point(235, 216);
-            lblIterations.Name = "lblIterations";
-            lblIterations.Size = new Size(33, 37);
-            lblIterations.TabIndex = 68;
-            lblIterations.Text = "0";
+            lblCycleCounter.AutoSize = true;
+            lblCycleCounter.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblCycleCounter.Location = new Point(235, 230);
+            lblCycleCounter.Name = "lblCycleCounter";
+            lblCycleCounter.Size = new Size(33, 37);
+            lblCycleCounter.TabIndex = 68;
+            lblCycleCounter.Text = "0";
             // 
             // lblTimer
             // 
             lblTimer.AutoSize = true;
             lblTimer.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            lblTimer.Location = new Point(16, 216);
+            lblTimer.Location = new Point(16, 230);
             lblTimer.Name = "lblTimer";
             lblTimer.Size = new Size(127, 37);
             lblTimer.TabIndex = 67;
@@ -101,7 +101,7 @@
             // btnIterationTotalDamage
             // 
             btnIterationTotalDamage.AutoSize = true;
-            btnIterationTotalDamage.Location = new Point(577, 44);
+            btnIterationTotalDamage.Location = new Point(577, 91);
             btnIterationTotalDamage.Name = "btnIterationTotalDamage";
             btnIterationTotalDamage.Size = new Size(13, 15);
             btnIterationTotalDamage.TabIndex = 66;
@@ -110,7 +110,7 @@
             // btnIterationTotalTabDefence
             // 
             btnIterationTotalTabDefence.AutoSize = true;
-            btnIterationTotalTabDefence.Location = new Point(577, 77);
+            btnIterationTotalTabDefence.Location = new Point(577, 138);
             btnIterationTotalTabDefence.Name = "btnIterationTotalTabDefence";
             btnIterationTotalTabDefence.Size = new Size(13, 15);
             btnIterationTotalTabDefence.TabIndex = 65;
@@ -119,7 +119,7 @@
             // btnIterationTotalHealth
             // 
             btnIterationTotalHealth.AutoSize = true;
-            btnIterationTotalHealth.Location = new Point(577, 114);
+            btnIterationTotalHealth.Location = new Point(577, 175);
             btnIterationTotalHealth.Name = "btnIterationTotalHealth";
             btnIterationTotalHealth.Size = new Size(13, 15);
             btnIterationTotalHealth.TabIndex = 64;
@@ -128,7 +128,7 @@
             // btnIterationTotalTabAttack
             // 
             btnIterationTotalTabAttack.AutoSize = true;
-            btnIterationTotalTabAttack.Location = new Point(577, 145);
+            btnIterationTotalTabAttack.Location = new Point(577, 55);
             btnIterationTotalTabAttack.Name = "btnIterationTotalTabAttack";
             btnIterationTotalTabAttack.Size = new Size(13, 15);
             btnIterationTotalTabAttack.TabIndex = 63;
@@ -146,7 +146,7 @@
             // lblIterationCurrentDamage
             // 
             lblIterationCurrentDamage.AutoSize = true;
-            lblIterationCurrentDamage.Location = new Point(521, 44);
+            lblIterationCurrentDamage.Location = new Point(521, 91);
             lblIterationCurrentDamage.Name = "lblIterationCurrentDamage";
             lblIterationCurrentDamage.Size = new Size(13, 15);
             lblIterationCurrentDamage.TabIndex = 61;
@@ -155,7 +155,7 @@
             // lblIterationCurrentTabDefence
             // 
             lblIterationCurrentTabDefence.AutoSize = true;
-            lblIterationCurrentTabDefence.Location = new Point(521, 77);
+            lblIterationCurrentTabDefence.Location = new Point(521, 138);
             lblIterationCurrentTabDefence.Name = "lblIterationCurrentTabDefence";
             lblIterationCurrentTabDefence.Size = new Size(13, 15);
             lblIterationCurrentTabDefence.TabIndex = 60;
@@ -164,7 +164,7 @@
             // lblIterationCurrentHealth
             // 
             lblIterationCurrentHealth.AutoSize = true;
-            lblIterationCurrentHealth.Location = new Point(521, 114);
+            lblIterationCurrentHealth.Location = new Point(521, 175);
             lblIterationCurrentHealth.Name = "lblIterationCurrentHealth";
             lblIterationCurrentHealth.Size = new Size(13, 15);
             lblIterationCurrentHealth.TabIndex = 59;
@@ -173,7 +173,7 @@
             // lblIterationCurrentTabAttack
             // 
             lblIterationCurrentTabAttack.AutoSize = true;
-            lblIterationCurrentTabAttack.Location = new Point(521, 145);
+            lblIterationCurrentTabAttack.Location = new Point(521, 55);
             lblIterationCurrentTabAttack.Name = "lblIterationCurrentTabAttack";
             lblIterationCurrentTabAttack.Size = new Size(13, 15);
             lblIterationCurrentTabAttack.TabIndex = 58;
@@ -191,7 +191,7 @@
             // btnPause
             // 
             btnPause.Enabled = false;
-            btnPause.Location = new Point(272, 181);
+            btnPause.Location = new Point(272, 205);
             btnPause.Name = "btnPause";
             btnPause.Size = new Size(216, 23);
             btnPause.TabIndex = 56;
@@ -202,33 +202,33 @@
             // button1
             // 
             button1.Enabled = false;
-            button1.Location = new Point(380, 105);
+            button1.Location = new Point(380, 166);
             button1.Name = "button1";
             button1.Size = new Size(108, 23);
             button1.TabIndex = 55;
             button1.Text = "Pick location";
             button1.UseVisualStyleBackColor = true;
             // 
-            // txtPostionHealthY
+            // txtPositionHealthY
             // 
-            txtPostionHealthY.Enabled = false;
-            txtPostionHealthY.Location = new Point(248, 106);
-            txtPostionHealthY.Name = "txtPostionHealthY";
-            txtPostionHealthY.Size = new Size(100, 23);
-            txtPostionHealthY.TabIndex = 54;
+            txtPositionHealthY.Enabled = false;
+            txtPositionHealthY.Location = new Point(248, 167);
+            txtPositionHealthY.Name = "txtPositionHealthY";
+            txtPositionHealthY.Size = new Size(100, 23);
+            txtPositionHealthY.TabIndex = 54;
             // 
-            // txtPostionHealthX
+            // txtPositionHealthX
             // 
-            txtPostionHealthX.Enabled = false;
-            txtPostionHealthX.Location = new Point(115, 106);
-            txtPostionHealthX.Name = "txtPostionHealthX";
-            txtPostionHealthX.Size = new Size(100, 23);
-            txtPostionHealthX.TabIndex = 53;
+            txtPositionHealthX.Enabled = false;
+            txtPositionHealthX.Location = new Point(115, 167);
+            txtPositionHealthX.Name = "txtPositionHealthX";
+            txtPositionHealthX.Size = new Size(100, 23);
+            txtPositionHealthX.TabIndex = 53;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(12, 109);
+            label5.Location = new Point(12, 170);
             label5.Name = "label5";
             label5.Size = new Size(42, 15);
             label5.TabIndex = 52;
@@ -236,7 +236,7 @@
             // 
             // btnStartStop
             // 
-            btnStartStop.Location = new Point(12, 181);
+            btnStartStop.Location = new Point(12, 205);
             btnStartStop.Name = "btnStartStop";
             btnStartStop.Size = new Size(216, 23);
             btnStartStop.TabIndex = 51;
@@ -246,23 +246,24 @@
             // 
             // btnLocationAttackTab
             // 
-            btnLocationAttackTab.Location = new Point(380, 141);
+            btnLocationAttackTab.Location = new Point(380, 51);
             btnLocationAttackTab.Name = "btnLocationAttackTab";
             btnLocationAttackTab.Size = new Size(108, 23);
             btnLocationAttackTab.TabIndex = 50;
             btnLocationAttackTab.Text = "Pick location";
             btnLocationAttackTab.UseVisualStyleBackColor = true;
+            btnLocationAttackTab.Click += btnLocationAttackTab_Click;
             // 
             // txtPositionTabAttackY
             // 
-            txtPositionTabAttackY.Location = new Point(248, 142);
+            txtPositionTabAttackY.Location = new Point(248, 52);
             txtPositionTabAttackY.Name = "txtPositionTabAttackY";
             txtPositionTabAttackY.Size = new Size(100, 23);
             txtPositionTabAttackY.TabIndex = 49;
             // 
             // txtPositionTabAttackX
             // 
-            txtPositionTabAttackX.Location = new Point(115, 142);
+            txtPositionTabAttackX.Location = new Point(115, 52);
             txtPositionTabAttackX.Name = "txtPositionTabAttackX";
             txtPositionTabAttackX.Size = new Size(100, 23);
             txtPositionTabAttackX.TabIndex = 48;
@@ -270,7 +271,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 145);
+            label4.Location = new Point(12, 55);
             label4.Name = "label4";
             label4.Size = new Size(61, 15);
             label4.TabIndex = 47;
@@ -278,31 +279,32 @@
             // 
             // btnLocationDefenceTab
             // 
-            btnLocationDefenceTab.Location = new Point(380, 73);
+            btnLocationDefenceTab.Location = new Point(380, 134);
             btnLocationDefenceTab.Name = "btnLocationDefenceTab";
             btnLocationDefenceTab.Size = new Size(108, 23);
             btnLocationDefenceTab.TabIndex = 46;
             btnLocationDefenceTab.Text = "Pick location";
             btnLocationDefenceTab.UseVisualStyleBackColor = true;
+            btnLocationDefenceTab.Click += btnLocationDefenceTab_Click;
             // 
             // txtPositionTabDefenceY
             // 
-            txtPositionTabDefenceY.Location = new Point(248, 74);
+            txtPositionTabDefenceY.Location = new Point(248, 135);
             txtPositionTabDefenceY.Name = "txtPositionTabDefenceY";
             txtPositionTabDefenceY.Size = new Size(100, 23);
             txtPositionTabDefenceY.TabIndex = 45;
             // 
-            // txtPositionTabDefanceX
+            // txtPositionTabDefenceX
             // 
-            txtPositionTabDefanceX.Location = new Point(115, 74);
-            txtPositionTabDefanceX.Name = "txtPositionTabDefanceX";
-            txtPositionTabDefanceX.Size = new Size(100, 23);
-            txtPositionTabDefanceX.TabIndex = 44;
+            txtPositionTabDefenceX.Location = new Point(115, 135);
+            txtPositionTabDefenceX.Name = "txtPositionTabDefenceX";
+            txtPositionTabDefenceX.Size = new Size(100, 23);
+            txtPositionTabDefenceX.TabIndex = 44;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 77);
+            label3.Location = new Point(12, 138);
             label3.Name = "label3";
             label3.Size = new Size(70, 15);
             label3.TabIndex = 43;
@@ -310,7 +312,7 @@
             // 
             // btnLocationDamage
             // 
-            btnLocationDamage.Location = new Point(380, 40);
+            btnLocationDamage.Location = new Point(380, 87);
             btnLocationDamage.Name = "btnLocationDamage";
             btnLocationDamage.Size = new Size(108, 23);
             btnLocationDamage.TabIndex = 42;
@@ -320,14 +322,14 @@
             // 
             // txtPositionDamageY
             // 
-            txtPositionDamageY.Location = new Point(248, 41);
+            txtPositionDamageY.Location = new Point(248, 88);
             txtPositionDamageY.Name = "txtPositionDamageY";
             txtPositionDamageY.Size = new Size(100, 23);
             txtPositionDamageY.TabIndex = 41;
             // 
             // txtPositionDamageX
             // 
-            txtPositionDamageX.Location = new Point(115, 41);
+            txtPositionDamageX.Location = new Point(115, 88);
             txtPositionDamageX.Name = "txtPositionDamageX";
             txtPositionDamageX.Size = new Size(100, 23);
             txtPositionDamageX.TabIndex = 40;
@@ -335,7 +337,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 44);
+            label2.Location = new Point(12, 91);
             label2.Name = "label2";
             label2.Size = new Size(51, 15);
             label2.TabIndex = 39;
@@ -376,8 +378,8 @@
             // 
             // txtLog
             // 
-            txtLog.Font = new Font("Segoe UI", 22F);
-            txtLog.Location = new Point(16, 266);
+            txtLog.Font = new Font("Segoe UI", 15F);
+            txtLog.Location = new Point(16, 280);
             txtLog.Multiline = true;
             txtLog.Name = "txtLog";
             txtLog.ScrollBars = ScrollBars.Vertical;
@@ -393,10 +395,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(621, 888);
+            ClientSize = new Size(628, 923);
             Controls.Add(txtLog);
             Controls.Add(lblCounterSteps);
-            Controls.Add(lblIterations);
+            Controls.Add(lblCycleCounter);
             Controls.Add(lblTimer);
             Controls.Add(btnIterationTotalDamage);
             Controls.Add(btnIterationTotalTabDefence);
@@ -410,8 +412,8 @@
             Controls.Add(lblIterationCurrentGems);
             Controls.Add(btnPause);
             Controls.Add(button1);
-            Controls.Add(txtPostionHealthY);
-            Controls.Add(txtPostionHealthX);
+            Controls.Add(txtPositionHealthY);
+            Controls.Add(txtPositionHealthX);
             Controls.Add(label5);
             Controls.Add(btnStartStop);
             Controls.Add(btnLocationAttackTab);
@@ -420,7 +422,7 @@
             Controls.Add(label4);
             Controls.Add(btnLocationDefenceTab);
             Controls.Add(txtPositionTabDefenceY);
-            Controls.Add(txtPositionTabDefanceX);
+            Controls.Add(txtPositionTabDefenceX);
             Controls.Add(label3);
             Controls.Add(btnLocationDamage);
             Controls.Add(txtPositionDamageY);
@@ -440,7 +442,7 @@
         #endregion
 
         private Label lblCounterSteps;
-        private Label lblIterations;
+        private Label lblCycleCounter;
         private Label lblTimer;
         private Label btnIterationTotalDamage;
         private Label btnIterationTotalTabDefence;
@@ -454,8 +456,8 @@
         private Label lblIterationCurrentGems;
         private Button btnPause;
         private Button button1;
-        private TextBox txtPostionHealthY;
-        private TextBox txtPostionHealthX;
+        private TextBox txtPositionHealthY;
+        private TextBox txtPositionHealthX;
         private Label label5;
         private Button btnStartStop;
         private Button btnLocationAttackTab;
@@ -464,7 +466,7 @@
         private Label label4;
         private Button btnLocationDefenceTab;
         private TextBox txtPositionTabDefenceY;
-        private TextBox txtPositionTabDefanceX;
+        private TextBox txtPositionTabDefenceX;
         private Label label3;
         private Button btnLocationDamage;
         private TextBox txtPositionDamageY;
